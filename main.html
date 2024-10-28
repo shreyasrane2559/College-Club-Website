@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" type="text/css" href="../public/Styles.css">
+    <script>
+        async function handleSubmit(){
+            var username = getElementById('username').value;
+            var mobile = getElementById('mobile').value;
+            var player1 = getElementById('player1').value;
+            var player2 = getElementById('player2').value;
+            var player3 = getElementById('player3').value;
+            var player4 = getElementById('player4').value;
+            var data = {
+                username:username,
+                mobile:mobile,
+                player1:player1,
+                player2:player2,
+                player3:player3,
+                player4:player4,
+            }
+            
+            await fetch("http://localhost:3000/register",{
+                method: "POST",
+                mode: "cors",
+                headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                    body: JSON.stringify(data),
+            });
+            }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Register Form</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="username">Game Name:</label>
+                <input type="text" id="username" name="username" required >
+            </div>
+
+            <div class="form-group" style="display: flex;">
+                <label for="player1">Player1:</label>
+                <input type="player1" id="player1" name="player1" required>
+
+                <label for="mobile" class="mobile" >Mobile:</label>
+                <input type="mobile" id="mobile" name="mobile" required>
+            </div>  
+            <div class="form-group" style="display: flex;">
+                <label for="player2">Player2:</label>
+                <input type="player2" id="player2" name="player2" required>
+            </div>           
+            <div class="form-group" style="display: flex;">
+                <label for="player3">Player3:</label>
+                <input type="player3" id="player3" name="player3" required>
+            </div> 
+            <div class="form-group" style="display: flex;">
+                <label for="player4">Player4:</label>
+                <input type="player4" id="player4" name="player4" required>
+            </div> 
+            <button type="submit" onsubmit={handleSubmit()}>Register</button>
+        </form>
+    </div>
+   
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+.mobile{
+    margin-left: 20px;
+}
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media only screen and (max-width: 500px) {
+    .form-group {
+    display: block;
+    flex-direction: column;
+
+}
+.mobile{
+    margin-top: 20px;
+    margin-left: 0%;
+}
+
+#username{
+    width: 318px;
+}
+}
+    </style>
+
+
+
+</body>
+</html>
